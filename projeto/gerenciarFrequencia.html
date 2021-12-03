@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gerencia Frequencias</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/pages/quem-somos.min.css" rel="stylesheet">
+</head>
+<body>
+<header id="header" class="page-quem-somos">
+  <div class="container">
+    <div class="row">
+      <div class="col col-desktop-3 col-6">
+        <a href="index.html">
+         </a>
+      </div>
+      <div class="col col-desktop-9 col-6">
+        <nav>
+          <ul>
+            <li><a href="/"></a></li>
+			<li><a href="quem-somos.html" class="active">Pagina inicial</a></li>
+            <li><a href="professor.html">Cadastro Professor</a></li>
+            <li><a href="equipe.html">Equipe</a></li>
+            <li><a href="empresa.html">Cadastro empresa</a></li>
+			<li><a href="contratos.html">Contratos</a></li>
+			<li><a href="eventos.html">Eventos</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-desktop-12 title">
+        
+        <h1>The interns</h1>
+        <!DOCTYPE html>
+
+        <!DOCTYPE html>
+        <html xmlns="http://www.w3.org/1999/xhtml" 
+          xmlns:th="http://www.thymeleaf.org"
+          xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+            layout:decorator="layouts/LayoutInicio">
+         
+        
+    <div class="row">
+      <div class="col col-desktop-12 title">
+        <h1> <FONT COLOR="#rrggbb"></FONT> </h1>
+      </div>
+    </div>
+  </div>
+</header>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorator="layouts/LayoutGestaoPessoas">
+
+<head>
+	<title>Gestão Pessoas | Acompanhamento Estagiário</title>
+</head>
+
+<section layout:fragment="conteudo">
+			
+  <div class="container-fluid titulo-pagina">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a th:href="@{/Supervisao/}" >Minhas Turmas</a></li>
+            <li><a th:href="@{'/Supervisao/Turma/' + ${estagio.turma.id}}" >Detalhes Turma</a></li>
+            <li><a th:href="@{/Supervisao/Acompanhamento/{id}(id=${estagio.id})}">Acompanhamento Estagiário</a></li>
+            <li class="active">Gerenciar Frequencias</li>
+        </ul>
+        <h1>Gerenciar Frequencias</h1>
+    </div>
+  </div>
+  
+  <div class="container animated fadeInRight">
+	<div class="row">
+	  <div class="col-md-12">
+		  <div class="panel panel-bluegray">
+			<div class="panel-body">
+				
+		  <form id="form-estagiario" method="post" class="form-horizontal" th:action="@{/CadastroEstagiario}" th:object="${estagiario}">
+			<fieldset>
+			  <legend>Dados Pessoais</legend>
+				 <div th:class="${#fields.hasErrors('nomeCompleto')}? 'form-group has-error' : form-group">
+					<label for="nomeCompleto" class="col-md-2 control-label">*Nome Completo</label>
+				   <div class="col-md-10">
+					 <input th:field="*{nomeCompleto}" placeholder="Nome Completo" type="text" class="form-control" id="nomeCompleto"  required="required"/>
+					 <label class="control-label" th:if="${#fields.hasErrors('nomeCompleto')}" th:errors="*{nomeCompleto}"></label>
+				   </div>
+			  </div>
+			  <div th:class="${#fields.hasErrors('dataNascimento')}? 'form-group has-error' : form-group">
+				 <label for="dataNascimento" class="col-md-2 control-label">*Data de Nascimento</label>
+				 <div class="col-md-10">
+				   <input id="dataNascimento" th:field="*{dataNascimento}" class="form-control data" type="text" aria-required="true" required="required"/>
+				   <label class="control-label" th:if="${#fields.hasErrors('dataNascimento')}" th:errors="*{dataNascimento}"></label>
+				 </div>	
+				 <div class="form-group" th:class="${#fields.hasErrors('email')}? 'form-group has-error' : form-group">
+					<label for="email" class="col-md-2 control-label">*E-mail:</label>
+					<div class="col-md-10">
+				  <input th:field="*{email}" placeholder="E-mail" required="required" type="text" class="form-control" />
+				  <label class="control-label" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></label>	      
+					</div>
+					<div class="form-group" th:class="${#fields.hasErrors('telefone')}? 'form-group has-error' : form-group">
+						<label for="telefone" class="col-md-2 control-label">*Telefone</label>
+						<div class="col-md-10">
+						  <input th:field="*{telefone}" placeholder="Telefone" required="required" type="text" class="form-control" id="telefone"  />
+						  <label class="control-label" th:if="${#fields.hasErrors('telefone')}" th:errors="*{telefone}"></label>
+						</div>
+						<div class="form-group" th:class="${#fields.hasErrors('usuarioGithub')}? 'form-group has-error' : form-group">
+							<label for="contaGithub" class="col-md-2 control-label">Usuario github:</label>
+							<div class="col-md-10">
+							<input id="contaGithub" th:field="*{usuarioGithub}" placeholder="Conta github" class="form-control" type="text" />	      
+						</div>	
+						<label for="nomeCompleto" class="col-md-2 control-label">Nome do orientador:</label>
+				   <div class="col-md-10">
+					 <input th:field="*{nomeCompleto}" placeholder="Nome Orientador" type="text" class="form-control" id="nomeCompleto"  required="required"/>
+					 <label class="control-label" th:if="${#fields.hasErrors('nomeCompleto')}" th:errors="*{nomeCompleto}"></label>
+				   </div>
+				 </div>
+				 <label for="semestre" class="col-md-2 control-label">*Semestre:</label>
+					<div class="col-md-10">
+					 <select class="form-control" th:name="semestre">
+						<option>Selecione seu semestre atual</option>
+						<option th:value="1">1ª</option>
+						<option value="2">2ª</option>
+						<option value="3">3ª</option>
+						<option value="4">4ª</option>
+						<option value="5">5ª</option>
+						<option value="6">6ª</option>
+						<option value="7">7ª</option>
+						<option value="8">8ª</option>
+						<option value="9">9ª</option>
+						<option value="10">10ª</option>
+						<option value="11">11ª</option>
+						<option value="12">12ª</option>
+					   </select>
+				   <label class="control-label" th:if="${#fields.hasErrors('semestre')}" th:errors="*{semestre}"></label>
+					</div>
+					<div class="form-group">
+						<label for="curso" class="col-md-2 control-label">*Curso:</label>
+						<div class="col-md-10">
+						 <select class="form-control" id="curso" th:name="curso">
+							  <option th:each="curso : ${cursos}"
+									 th:value="${curso}"
+									 th:text="${curso.descricao}"
+									 th:selected="${#strings.equals(curso,estagiario.curso)}"></option>
+							</select>
+						</div>
+			  </div>
+							  
+</div>
+  
+</section>
+
+<section layout:fragment="js">
+<script type="text/javascript">
+</script>
+</section>
+
+</html>
+
+	    <div class="col-md-8">
+
+	    	<div class="alert alert-dismissible alert-success" th:if="${! #strings.isEmpty(sucesso)}">
+  				<button type="button" class="close" data-dismiss="alert">&times;</button>
+  				<strong th:text="${sucesso}"></strong>
+  			</div>
+
+	        <div class="panel panel-bluegray">
+	          <div class="panel-heading">
+	            <a class="panel-title" data-toggle="collapse" data-target="#consolidado"><i class="fa fa-caret-down" aria-hidden="true">
+					
+				</i> Consolidado Frequências</a>
+			  </div>
+	          <div id="consolidado" class="panel-body collapse in">
+			      <div class="col-sm-4">
+			          <ul class="list-group">
+			            <li class="list-group-item gp-list-group-item list-group-item-success">
+			              <b>Presenças</b> <span class="badge" th:inline="text"><input th:field="*{email}" placeholder="" required="required" type="text" class="form-control" />
+							<label class="control-label" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></label></span>
+			            </li>
+			          </ul>
+			      </div>
+	
+			      <div class="col-sm-4">
+			          <ul class="list-group">
+			            <li class="list-group-item gp-list-group-item list-group-item-danger">
+			              <b>Faltas</b> <span class="badge" th:inline="text"><input th:field="*{email}" placeholder="" required="required" type="text" class="form-control" />
+							<label class="control-label" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></label></span>
+			            </li>
+			          </ul>
+			      </div>
+	
+			      <div class="col-sm-4">
+			          <ul class="list-group">
+			            <li class="list-group-item gp-list-group-item list-group-item-warning">
+			              <b>Atrasos</b> <span class="badge" th:inline="text"><input th:field="*{email}" placeholder="" required="required" type="text" class="form-control" />
+							<label class="control-label" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></label><b></b> </span>
+			            </li>
+			          </ul>
+			      </div>
+	
+			      <div class="col-sm-4">
+			          <ul class="list-group">
+			            <li class="list-group-item gp-list-group-item list-group-item-info">
+			              <b>Reposições</b> <span class="badge" th:inline="text"><input th:field="*{email}" placeholder="" required="required" type="text" class="form-control" />
+							<label class="control-label" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></label></span>
+			            </li>
+			          </ul>
+			      </div>
+	
+			      <div class="col-sm-4">
+			          <ul class="list-group">
+			            <li class="list-group-item gp-list-group-item list-group-item-default">
+			              <b>Pendências</b> <span class="badge" th:inline="text"><input th:field="*{email}" placeholder="" required="required" type="text" class="form-control" />
+							<label class="control-label" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></label></span>
+			            </li>
+			          </ul>
+			      </div>
+			      <div class="col-sm-4">
+			          <ul class="list-group"></ul>
+					  <button class="btn btn-second">Envie</button>
+			      </div>
+				  <br/><br/>
+	          </div>
+	        </div>
+
+	        <div class="panel panel-bluegray">
+	          <div class="panel-heading">
+	            <a class="panel-title" data-toggle="collapse" data-target="#presenca"><i class="fa fa-caret-down" aria-hidden="true"></i> Frequências</a>
+			  </div>
+	          <div id="presenca" class="panel-body collapse in">
+	          
+				<form id="form-reposicao" class="form-horizontal" th:action="@{/Supervisao/Acompanhamento/{idEstagio}/AgendarReposicao(idEstagio=${estagio.id})}" method="post">
+		  			<div class="form-group">
+				    	<div class="form-item">
+					    	<label for="dataReposicao" class="col-lg-1 control-label">Data</label>
+					    	<div class="col-lg-4">
+					    		<input type="text" class="form-control data" id="dataReposicao" name="dataReposicao" required="required" placeholder="dd/MM/aaaa"/>
+					    		<label th:if="${!#strings.isEmpty(errorData)}" th:text="${errorData}" class="color-error"></label>
+					    		<label th:if="${!#strings.isEmpty(errorExpediente)}" th:text="${errorExpediente}" class="color-error"></label>
+					  		</div>
+				    	</div>
+
+				    	<div class="form-item">
+				    	  <label class="col-lg-1 control-label">Horário de entrada</label>	
+					      <div class="col-lg-2">
+							<input type="text" class="form-control" id="horaAgendamentoEntrada" name="horaAgendamentoEntrada" placeholder="HH:mm" required="required"/>				    
+					      </div>
+				    	</div>
+						<label class="col-lg-1 control-label">Horário de saída</label>
+				    	<div class="form-item">
+					      <div class="col-lg-2">
+							<input type="text" class="form-control" id="horaAgendamentoSaida" name="horaAgendamentoSaida" placeholder="HH:mm" required="required"/>
+					      </div>
+				    	</div>
+
+				    	<div class="form-item">
+					      <div class="col-lg-2">
+				        	<button type="submit" class="btn btn-success">Adicionar</button>
+					      </div>
+				    	</div>
+			    	</div>
+				</form>
+	          
+				<div id="frequencias">	          
+					<table class="table table-hover table-frequencia">
+					  <thead>
+					    <tr>
+					    
+					      <th class="sort" data-sort="status">Faltas justificadas </th>
+					      <th></th>
+					    </tr>
+					  </thead>
+					  <tbody class="list">
+						<tr th:each="frequencia : ${estagio.frequencias}">
+						    <td class="hidden" th:text="${frequencia.id}"></td>
+							<td class="timestamp" data-timestamp="20120911" th:inline="text" th:attr="data-timestamp=${#dates.format(frequencia.data,'yyyyMMdd')}"><textarea name="mensagem" placeholder="Faltas justificadas "></textarea>
+								<br>
+									<button class="btn btn-second">Envie</button>
+
+
+							
+ 	     </div>
+	   </div>
+	  </div>
+
+
+
+
+
+
+
+</section>
+
+
+
+
+
+<section layout:fragment="js">
+	
+  <script th:src="@{/js/list.min.js}"></script>
+  <script type="text/javascript">
+	var options = { valueNames: [{ attr: 'data-timestamp', name: 'timestamp' }, 'status', 'tipo'] };
+	var frequencias = new List('frequencias', options).sort('timestamp', { order: "desc" });
+// 	var reposicoes = new List('reposicoes', options).sort('timestamp', { order: "desc" });
+
+		$(".btn[data-target='#myModal']").click(function() {
+
+			var columnHeadings = $(".table-frequencia thead th").map(function() { return $(this).text(); }).get();
+			columnHeadings.pop();
+			
+		var columnValues = $(this).parent().siblings().map(function() { return $(this).text(); }).get();
+		$(".modal-title").text("Editar Frequência: " + columnValues[1]);
+
+		var modalForm = $('#form-editar-frequencia');
+		
+		$('#form-editar-frequencia > div').remove();
+		
+		var formGroup = $('<div class="form-group"></div>');
+		formGroup.append('<input type="hidden" class="form-control" name="idFrequencia" id="idFrequencia" value="'+columnValues[0]+'" />'); 
+		modalForm.append(formGroup);
+		
+		var formGroup = $('<div class="form-group"></div>');
+		formGroup.append('<label for="'+columnHeadings[5]+'">'+columnHeadings[5]+'</label>');
+		formGroup.append('<select class="form-control" id="status" name="status"> <option value="PRESENTE">Presente</option> <option value="FALTA">Falta</option> <option value="ATRASADO">Atrasado</option> </select>');
+		modalForm.append(formGroup);
+		
+		var formGroup = $('<div class="form-group"></div>');
+		formGroup.append('<label for="'+columnHeadings[3]+'">'+columnHeadings[3]+'</label>');
+		formGroup.append('<input class="form-control" placeholder="HH:mm" name="entrada" id="entradaExpediente" value="'+columnValues[3]+'" />');
+		formGroup.append('<label class="control-label"></label>');
+		modalForm.append(formGroup);
+		
+		var formGroup = $('<div class="form-group"></div>');
+		formGroup.append('<label for="'+columnHeadings[4]+'">'+columnHeadings[4]+'</label>');
+		formGroup.append('<input class="form-control" placeholder="HH:mm" name="saida" id="saidaExpediente" value="'+columnValues[4]+'" />');
+		formGroup.append('<label class="control-label"></label>');
+
+		modalForm.append(formGroup);
+
+		});
+
+		$('.modal-footer .btn-success').click(function() {
+		   $('form[name="modalForm"]').submit();
+		});
+
+  </script>
+</section>
+</html>

@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cadastro Supervisor</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/pages/quem-somos.min.css" rel="stylesheet">
+</head>
+<body>
+<header id="header" class="page-quem-somos">
+  <div class="container">
+    <div class="row">
+      <div class="col col-desktop-3 col-6">
+        <a href="index.html">
+         </a>
+      </div>
+      <div class="col col-desktop-9 col-6">
+        <nav>
+          <ul>
+            <li><a href="/"></a></li>
+            <li><a href="quem-somos.html" class="active">Cadastro</a></li>
+            <li><a href="clientes.html">clientes</a></li>
+            <li><a href="equipe.html">Equipe</a></li>
+            <li><a href="contato.html">Contato</a></li>
+            <li><a href="empresa.html">Cadastro empresa</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-desktop-12 title">
+        
+        <h1>The interns</h1>
+        <!DOCTYPE html>
+
+        <!DOCTYPE html>
+        <html xmlns="http://www.w3.org/1999/xhtml" 
+          xmlns:th="http://www.thymeleaf.org"
+          xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+            layout:decorator="layouts/LayoutInicio">
+         
+        
+    <div class="row">
+      <div class="col col-desktop-12 title">
+        <h1> <FONT COLOR="#rrggbb"></FONT> </h1>
+      </div>
+    </div>
+  </div>
+</header>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorator="layouts/LayoutInicio">
+
+<head>
+	<title>Gestão Pessoas | Cadastro</title>	
+</head>
+
+<section layout:fragment="conteudo">
+
+
+  <div class="container-fluid titulo-pagina">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a href="#"></a></li>
+        </ul>
+        <h1>Meu Cadastro</h1>
+    </div>
+  </div>
+
+
+	<div class="container animated fadeInRight">
+	    <div class="row">
+		    <div class="col-md-12">
+		        <div class="panel panel-bluegray">
+		          <div class="panel-body">
+						<form id="form-servidor" method="post" class="form-horizontal" th:action="@{/CadastroSupervisor}" th:object="${servidor}">
+							<fieldset>
+								<legend>Dados Pessoais</legend>
+							   	<div th:class="${#fields.hasErrors('nome')}? 'form-group has-error' : form-group">
+							      	<label for="nome" class="col-md-2 control-label">*Nome Completo</label>
+								     <div class="col-md-10">
+								     	<input name="nome" th:value="${usuario.nome}" placeholder="Nome Completo" type="text" class="form-control" id="nome"  required="required"/>
+							     		<label class="control-label" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></label>
+								     </div>
+								</div>
+								<div class="form-group" th:class="${#fields.hasErrors('telefone')}? 'form-group has-error' : form-group">
+								    <label for="telefone" class="col-md-2 control-label">*Telefone</label>
+								   	<div class="col-md-10">
+								        <input name="telefone" th:value="${usuario.telefone}" placeholder="Telefone" required="required" type="text" class="form-control" id="telefone"  />
+								    	<label class="control-label" th:if="${#fields.hasErrors('telefone')}" th:errors="*{telefone}"></label>
+									</div>
+								</div>
+							</fieldset>
+							
+							<fieldset>
+								<legend>Dados do Trabalho</legend>
+								<div th:class="${#fields.hasErrors('siape')}? 'form-group has-error' : form-group">
+									<label for="siape" class="col-md-2 control-label">*Siape:</label>
+							   		<div class="col-md-10">
+			            				<input name="siape" th:value="${usuario.siape}" id="siape" class="form-control" placeholder="Siape" required="required" type="text"/>
+			            				<label class="control-label" th:if="${#fields.hasErrors('siape')}" th:errors="*{siape}"></label>
+							      	</div>
+								</div>
+								<div th:class="${#fields.hasErrors('cargo')}? 'form-group has-error' : form-group">
+							      	<label for="cargo" class="col-md-2 control-label">*Cargo</label>
+								     <div class="col-md-10">
+								     	<input name="cargo" th:value="${usuario.cargo}" placeholder="Cargo" type="text" class="form-control" id="cargo"  required="required"/>
+							     		<label class="control-label" th:if="${#fields.hasErrors('cargo')}" th:errors="*{cargo}"></label>
+								     </div>
+								</div>
+								<div th:class="${#fields.hasErrors('lotacao')}? 'form-group has-error' : form-group">
+							      	<label for="lotacao" class="col-md-2 control-label">*Lotação</label>
+								     <div class="col-md-10">
+								     	<input name="lotacao" th:value="${usuario.lotacao}" placeholder="Lotação" type="text" class="form-control" id="lotacao"  required="required"/>
+							     		<label class="control-label" th:if="${#fields.hasErrors('lotacao')}" th:errors="*{lotacao}"></label>
+								     </div>
+								</div>
+								<div th:class="${#fields.hasErrors('titulacao')}? 'form-group has-error' : form-group">
+							      	<label for="titulacao" class="col-md-2 control-label">*Titulação</label>
+								     <div class="col-md-10">
+								     	<input name="titulacao" th:value="${titulacao}" placeholder="Titulação" type="text" class="form-control" id="titulacao"  required="required"/>
+							     		<label class="control-label" th:if="${#fields.hasErrors('titulacao')}" th:errors="*{titulacao}"></label>
+								     </div>
+								</div>
+								<div th:class="${#fields.hasErrors('saudacao')}? 'form-group has-error' : form-group">
+							      	<label for="saudacao" class="col-md-2 control-label">*Saudação</label>
+								     <div class="col-md-10">
+								     	<input name="saudacao" th:value="${saudacao}" placeholder="Saudação" type="text" class="form-control" id="saudacao"  required="required"/>
+							     		<label class="control-label" th:if="${#fields.hasErrors('saudacao')}" th:errors="*{saudacao}"></label>
+								     </div>
+								</div>
+							</fieldset>
+							
+							<div class="form-group">
+						      <div class="col-lg-10 col-lg-offset-2">
+						        <a th:href="@{/CacelarCadastro}" class="btn btn-default">Cancelar</a>
+						        <button type="submit" class="btn btn-success">Salvar</button>
+						      </div>
+						    </div>
+						</form>
+		           </div>
+		        </div>
+		    </div>
+	   </div>
+	</div>
+    
+  </section>
+
+  <section layout:fragment="js">
+	<script type="text/javascript">
+	</script>
+  </section>
+  
+</html>

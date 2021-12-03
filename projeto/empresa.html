@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cadastra-se aluno</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/pages/quem-somos.min.css" rel="stylesheet">
+</head>
+<body>
+<header id="header" class="page-quem-somos">
+  <div class="container">
+    <div class="row">
+      <div class="col col-desktop-3 col-6">
+        <a href="index.html">
+        </a>
+      </div>
+      <div class="col col-desktop-9 col-6">
+        <nav>
+          <ul>
+            <li><a href="/"></a></li>
+            <li><a href="quem-somos.html">Página inicial</a></li>
+            <li><a href="empresa.html">Cadastro empresa</a></li>
+            <li><a href="equipe.html" class="active">Equipe</a></li>
+            <li><a href="contratos.html">Contrato</a></li>
+            <li><a href="eventos.html">Eventos</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-desktop-12 title">
+        <h1>Seja Bem Vindo ao The Interns</h1>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="row">
+      <div class="col col-desktop-12 title">
+        <h1>The interns</h1>
+        <!DOCTYPE html>
+
+        <!DOCTYPE html>
+        <html xmlns="http://www.w3.org/1999/xhtml" 
+          xmlns:th="http://www.thymeleaf.org"
+          xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+            layout:decorator="layouts/LayoutInicio">
+        
+
+            <!DOCTYPE html>
+            <html lang="pt-BR">
+              <head>
+                <meta charset="UTF-8" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <link rel="stylesheet" href="style.css" />
+                <link rel="icon" type="image/png" sizes="16x16" href="../../imagens/logo.png" />
+                <title>Menu Empresa</title>
+              </head>
+              <body>
+            
+                <div class="container">
+            
+                    <div class="close">
+                      <div class="line" id="line1"></div>
+                      <div class="line" id="line2"></div>
+                      <div class="line" id="line3"></div>
+                      <span></span>
+                    </div>  
+            
+                    <header id="home">
+                        <div class="img-wrapper">
+                            <img src="../../imagens/fundo.jpg" alt="">
+                        </div>
+                        <div class="banner">
+                            <h1>Cadastre sua Empresa!</h1>
+                                      </div>
+
+                    </header>
+             <!DOCTYPE html>
+        <html xmlns="http://www.w3.org/1999/xhtml" 
+          xmlns:th="http://www.thymeleaf.org"
+          xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+            layout:decorator="layouts/LayoutInicio">
+         
+        
+    <div class="row">
+      <div class="col col-desktop-12 title">
+        <h1> <FONT COLOR="#rrggbb"></FONT> </h1>
+      </div>
+    </div>
+  </div>
+</header>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorator="layouts/LayoutInicio">
+
+<head>
+	<title>Gestão Pessoas | Cadastro</title>	
+</head>
+
+<section layout:fragment="conteudo">
+
+
+  <div class="container-fluid titulo-pagina">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a href="#"></a></li>
+        </ul>
+        <h1>Seja Bem Vinda</h1>
+    </div>
+  </div>
+
+
+	<div class="container animated fadeInRight">
+	    <div class="row">
+		    <div class="col-md-12">
+		        <div class="panel panel-bluegray">
+		          <div class="panel-body">
+						<form id="form-servidor" method="post" class="form-horizontal" th:action="@{/CadastroSupervisor}" th:object="${servidor}">
+							<fieldset>
+								<legend>Dados Pessoais</legend>
+							   	<div th:class="${#fields.hasErrors('nome')}? 'form-group has-error' : form-group">
+							      	<label for="nome" class="col-md-2 control-label">*Nome da Empresa</label>
+								     <div class="col-md-10">
+								     	<input name="nome" th:value="${usuario.nome}" placeholder="Nome Completo" type="text" class="form-control" id="nome"  required="required"/>
+							     		<label class="control-label" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></label>
+								     </div>
+								</div>
+								<div class="form-group" th:class="${#fields.hasErrors('telefone')}? 'form-group has-error' : form-group">
+								    <label for="telefone" class="col-md-2 control-label">*Telefone</label>
+								   	<div class="col-md-10">
+								        <input name="telefone" th:value="${usuario.telefone}" placeholder="Telefone" required="required" type="text" class="form-control" id="telefone"  />
+								    	<label class="control-label" th:if="${#fields.hasErrors('telefone')}" th:errors="*{telefone}"></label>
+									</div>
+								</div>
+							</fieldset>
+							
+							<fieldset>
+								<legend>Dados do Trabalho</legend>
+								
+								</div>
+								<div th:class="${#fields.hasErrors('cargo')}? 'form-group has-error' : form-group">
+							      	<label for="cargo" class="col-md-2 control-label">*Cargo Procurado</label>
+								     <div class="col-md-10">
+								     	<input name="cargo" th:value="${usuario.cargo}" placeholder="Cargo" type="text" class="form-control" id="cargo"  required="required"/>
+							     		<label class="control-label" th:if="${#fields.hasErrors('cargo')}" th:errors="*{cargo}"></label>
+								     </div>
+								</div>
+								
+								<div th:class="${#fields.hasErrors('saudacao')}? 'form-group has-error' : form-group">
+							      	<label for="saudacao" class="col-md-2 control-label">*Saudação</label>
+								     <div class="col-md-10">
+								     	<input name="saudacao" th:value="${saudacao}" placeholder="Saudação" type="text" class="form-control" id="saudacao"  required="required"/>
+							     		<label class="control-label" th:if="${#fields.hasErrors('saudacao')}" th:errors="*{saudacao}">O campo Saudação tem que ser preenchido.</label>
+								     </div>
+								</div>
+							</fieldset>
+							
+							<div class="form-group">
+						      <div class="col-lg-10 col-lg-offset-2">
+						        <a th:href="@{/CacelarCadastro}" class="btn btn-default">Cancelar</a>
+						        <button type="submit" class="btn btn-success">Salvar</button>
+						      </div>
+						    </div>
+						</form>
+		           </div>
+		        </div>
+		    </div>
+	   </div>
+	</div>
+    
+  </section>
+
+  <section layout:fragment="js">
+	<script type="text/javascript">
+	</script>
+  </section>
+  
+</html>

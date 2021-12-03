@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nossa Equipe</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/pages/quem-somos.min.css" rel="stylesheet">
+</head>
+<body>
+<header id="header" class="page-quem-somos">
+  <div class="container">
+    <div class="row">
+      <div class="col col-desktop-3 col-6">
+        <a href="index.html">
+        </a>
+      </div>
+      <div class="col col-desktop-9 col-6">
+        <nav>
+          <ul>
+            <li><a href="/"></a></li>
+            <li><a href="quem-somos.html">Página inicial</a></li>
+            <li><a href="professor.html">Cadastro Professor</a></li>
+           <li><a href="equipe.html" class="active">Equipe</a></li>
+           <li><a href="empresa.html">Cadastro empresa</a></li>
+            <li><a href="contratos.html">Contrato</a></li>
+            <li><a href="eventos.html">Eventos</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-desktop-12 title">
+        <h1>Seja Bem Vindo ao The Interns</h1>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="row">
+      <div class="col col-desktop-12 title">
+        
+        <h1>The interns</h1>
+        <!DOCTYPE html>
+
+        <!DOCTYPE html>
+        <html xmlns="http://www.w3.org/1999/xhtml" 
+          xmlns:th="http://www.thymeleaf.org"
+          xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+            layout:decorator="layouts/LayoutInicio">
+        
+        <head>
+          <title>Gestão Pessoas | Cadastro</title>
+          
+          <style type="text/css">
+            .inline {
+              display:inline;
+            }
+            .color {
+            }
+        
+            .link {
+              font-weight: 700;
+            }
+        
+            .statusTurmas {
+              padding: 5px;
+            }
+            .opcao {
+              margin-left: 10px;
+            }
+            .item-turma {
+              margin-bottom: 5px; 
+            }
+            .legendTop {
+              margin-top: 40px;
+            }
+            #borda {
+              margin-top: 40px;
+            }
+            .legendBottom {
+              margin-bottom: 5px;
+            }
+            
+            .gp-panel-footer {
+              margin-top: -25px;
+              padding-bottom: 25px;
+            }
+        
+        
+          </style>	
+        </head>
+        
+        <section layout:fragment="conteudo">
+        
+        
+          <div class="container-fluid titulo-pagina">
+            <div class="container">
+                <ul class="breadcrumb">
+                    <li><a href="#"></a></li>
+                </ul>
+                <h1>Meu Cadastro</h1>
+            </div>
+          </div>
+        
+        
+          <div class="container animated fadeInRight">
+              <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-bluegray">
+                      <div class="panel-body">
+                          
+                    <form id="form-estagiario" method="post" class="form-horizontal" th:action="@{/CadastroEstagiario}" th:object="${estagiario}">
+                      <fieldset>
+                        <legend>Dados Pessoais</legend>
+                           <div th:class="${#fields.hasErrors('nomeCompleto')}? 'form-group has-error' : form-group">
+                              <label for="nomeCompleto" class="col-md-2 control-label">*Nome Completo</label>
+                             <div class="col-md-10">
+                               <input th:field="*{nomeCompleto}" placeholder="Nome Completo" type="text" class="form-control" id="nomeCompleto"  required="required"/>
+                               <label class="control-label" th:if="${#fields.hasErrors('nomeCompleto')}" th:errors="*{nomeCompleto}"></label>
+                             </div>
+                        </div>
+                        <div th:class="${#fields.hasErrors('dataNascimento')}? 'form-group has-error' : form-group">
+                           <label for="dataNascimento" class="col-md-2 control-label">*Data de Nascimento</label>
+                           <div class="col-md-10">
+                             <input id="dataNascimento" th:field="*{dataNascimento}" class="form-control data" type="text" aria-required="true" required="required"/>
+                             <label class="control-label" th:if="${#fields.hasErrors('dataNascimento')}" th:errors="*{dataNascimento}"></label>
+                           </div>	
+                        </div>
+                          <div th:class="${#fields.hasErrors('nomeMae')}? 'form-group has-error': form-group">
+                              <label for="nomeMae" class="col-md-2 control-label">*Nome da Mãe</label>
+                             <div class="col-md-10">
+                               <input th:field="*{nomeMae}" placeholder="Nome Mãe" required="required" type="text" class="form-control" id="nomeMae" />
+                               <label class="control-label" th:if="${#fields.hasErrors('nomeMae')}" th:errors="*{nomeMae}"></label>
+                             </div>
+                          </div>
+                      </fieldset>
+                       <fieldset>
+                        <legend>Dados de Contatos</legend>
+                        <div class="form-group" th:class="${#fields.hasErrors('email')}? 'form-group has-error' : form-group">
+                            <label for="email" class="col-md-2 control-label">*E-mail:</label>
+                            <div class="col-md-10">
+                          <input th:field="*{email}" placeholder="E-mail" required="required" type="text" class="form-control" />
+                          <label class="control-label" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></label>	      
+                            </div>
+                         </div>
+                         <div class="form-group" th:class="${#fields.hasErrors('telefone')}? 'form-group has-error' : form-group">
+                            <label for="telefone" class="col-md-2 control-label">*Telefone</label>
+                            <div class="col-md-10">
+                              <input th:field="*{telefone}" placeholder="Telefone" required="required" type="text" class="form-control" id="telefone"  />
+                              <label class="control-label" th:if="${#fields.hasErrors('telefone')}" th:errors="*{telefone}"></label>
+                            </div>
+                          </div>
+                          <div class="form-group" th:class="${#fields.hasErrors('usuarioGithub')}? 'form-group has-error' : form-group">
+                                <label for="contaGithub" class="col-md-2 control-label">Usuario github:</label>
+                                <div class="col-md-10">
+                                <input id="contaGithub" th:field="*{usuarioGithub}" placeholder="Conta github" class="form-control" type="text" />	      
+                            </div>	
+                          </div>
+                      </fieldset>
+                      <fieldset>
+                        <legend>Dados do Curso</legend>
+                             <div th:class="${#fields.hasErrors('matricula')}? 'form-group has-error' : form-group">
+                               <label for="matricula" class="col-md-2 control-label">*Matricula:</label>
+                             <div class="col-md-10">
+                                  <input th:field="*{matricula}" id="matricula" class="form-control" placeholder="Matricula" required="required" type="text" size="7" maxlength="7" aria-required="true" />
+                                  <label class="control-label" th:if="${#fields.hasErrors('matricula')}" th:errors="*{matricula}"></label>
+                              </div>
+                             </div>
+                              <div th:class="${#fields.hasErrors('semestre')}? 'form-group has-error' : form-group">
+                              <label for="semestre" class="col-md-2 control-label">*Semestre:</label>
+                              <div class="col-md-10">
+                               <select class="form-control" th:name="semestre">
+                                  <option>Selecione seu semestre atual</option>
+                                  <option th:value="1">1ª</option>
+                                  <option value="2">2ª</option>
+                                  <option value="3">3ª</option>
+                                  <option value="4">4ª</option>
+                                  <option value="5">5ª</option>
+                                  <option value="6">6ª</option>
+                                  <option value="7">7ª</option>
+                                  <option value="8">8ª</option>
+                                  <option value="9">9ª</option>
+                                  <option value="10">10ª</option>
+                                  <option value="11">11ª</option>
+                                  <option value="12">12ª</option>
+                                 </select>
+                             <label class="control-label" th:if="${#fields.hasErrors('semestre')}" th:errors="*{semestre}"></label>
+                              </div>
+                            </div>
+                          <div class="form-group">
+                             <label for="curso" class="col-md-2 control-label">*Curso:</label>
+                             <div class="col-md-10">
+                              <select class="form-control" id="curso" th:name="curso">
+                                   <option th:each="curso : ${cursos}"
+                                          th:value="${curso}"
+                                          th:text="${curso.descricao}"
+                                          th:selected="${#strings.equals(curso,estagiario.curso)}"></option>
+                                 </select>
+                             </div>
+                          </div>
+                      </fieldset>
+                      <fieldset>
+                        <legend>Endereço</legend>
+                         <div th:class="${#fields.hasErrors('endereco')}? 'form-group has-error' : form-group">
+                               <label for="endereco" class="col-md-2 control-label">*Endereço:</label>
+                              <div class="col-md-10">
+                                  <input id="endereco" th:field="*{endereco}" class="form-control" placeholder="Endereço" required="required" type="text" aria-required="true" />
+                                  <label class="control-label" th:if="${#fields.hasErrors('endereco')}" th:errors="*{endereco}"></label>
+                             </div>
+                            </div>
+                           <div th:class="${#fields.hasErrors('cidade')}? 'form-group has-error' : form-group">
+                             <label for="cidade" class="col-md-2 control-label">*Cidade:</label>
+                              <div class="col-md-10">
+                                <input id="cidade" th:field="*{cidade}" class="form-control" placeholder="Cidade" required="required" type="text" aria-required="true" />
+                              <label class="control-label" th:if="${#fields.hasErrors('cidade')}" th:errors="*{cidade}">.</label>
+                              </div> 
+                           </div>
+                          <div th:class="${#fields.hasErrors('uf')}? 'form-group has-error' : 
+          <div class="form-group">
+                          <div class="col-lg-10 col-lg-offset-2">
+                            <a th:href="@{/CacelarCadastro}" class="btn btn-default">Cancelar</a>
+                            <div class="panel-footer">
+                              
+                              <a href="" target="_blank" class="btn btn-link btn-xs">Entrar</a>
+                              <a href="file:///C:/Users/Rozin/Documents/GitHub/software/SITE/contratos.html"
+                          </div>
+                        </div>
+                    </form>
+                       </div>
+                    </div>
+                </div>
+             </div>
+          </div>
+            
+          </section>
+        
+          <section layout:fragment="js">
+          <script type="text/javascript">
+          </script>
+          </section>
+          
+        </html>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script>
+  $('form').submit(function (event) {
+    event.preventDefault();
+    $('form input[type="submit"]').val('Aguarde...')
+        .attr('disabled', true);
+    $.ajax({
+      type: $('form').attr('method'),
+      url: $('form').attr('action'),
+      data: $('form').serialize(),
+      success: function () {
+        alert('Email enviado com sucesso');
+        $('form').trigger('reset');
+
+        $('form input[type="submit"]').val('Enviar')
+        .attr('disabled', false);
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

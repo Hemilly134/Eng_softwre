@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cadastro Supervisor</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/pages/quem-somos.min.css" rel="stylesheet">
+</head>
+<body>
+<header id="header" class="page-quem-somos">
+  <div class="container">
+    <div class="row">
+      <div class="col col-desktop-3 col-6">
+        <a href="index.html">
+         </a>
+      </div>
+      <div class="col col-desktop-9 col-6">
+        <nav>
+          <ul>
+            <li><a href="/"></a></li>
+			<li><a href="quem-somos.html" class="active">Pagina inicial</a></li>
+            <li><a href="professor.html">Cadastro Professor</a></li>
+            <li><a href="equipe.html">Equipe</a></li>
+            <li><a href="empresa.html">Cadastro empresa</a></li>
+			<li><a href="contratos.html">Contratos</a></li>
+			<li><a href="gerenciarFrequencia.html">Frequências</a></li>
+			<li><a href="eventos.html">Eventos</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-desktop-12 title">
+        
+        <h1>The interns</h1>
+        <!DOCTYPE html>
+
+        <!DOCTYPE html>
+        <html xmlns="http://www.w3.org/1999/xhtml" 
+          xmlns:th="http://www.thymeleaf.org"
+          xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+            layout:decorator="layouts/LayoutInicio">
+         
+        
+    <div class="row">
+      <div class="col col-desktop-12 title">
+        <h1> <FONT COLOR="#rrggbb"></FONT> </h1>
+      </div>
+    </div>
+  </div>
+</header>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorator="layouts/LayoutInicio">
+
+	<!DOCTYPE html>
+	<html xmlns="http://www.w3.org/1999/xhtml" 
+		xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorator="layouts/LayoutGestaoPessoas">
+	<head>
+		<title>Gestão Pessoas | Acompanhamento</title>
+	</head>
+	
+	<section layout:fragment="conteudo">
+	
+	  <div class="container-fluid titulo-pagina">
+		<div class="container">
+			<ul class="breadcrumb">
+				<li><a th:href="@{/Estagiario}">Minhas Turmas</a></li>
+				<li class="active">Acompanhamento Estagiário</li>
+			</ul>
+			<h1>Acompanhamento</h1>
+		</div>
+	  </div>
+	
+		<div class="container animated fadeInRight"> 
+			<div class="row">
+			
+			 <div class="col-md-7">
+	
+				  <div class="alert alert-dismissible alert-danger" th:if="${!#strings.isEmpty(error)}">
+					  <button type="button" class="close" data-dismiss="alert">&times;</button>
+					  <p th:text="${error}"></p>
+				</div>
+				
+				<div th:each="evento : ${eventos}">
+					<p th:text="${evento.descricao}"></p>
+				</div>
+				
+				  <div class="alert alert-dismissible alert-success" th:if="${!#strings.isEmpty(sucesso)}">
+					  <button type="button" class="close" data-dismiss="alert">&times;</button>
+					  <p th:text="${sucesso}"></p>
+				</div>
+	
+			 <div class="panel panel-bluegray">
+				  <div class="panel-heading">
+					<a class="panel-title" data-toggle="collapse" data-target="#consolidado"><i class="fa fa-caret-down" aria-hidden="true"></i> Consolidado Frequências</a>
+				  </div>
+				  <div id="consolidado" class="panel-body collapse in">
+	
+				  <div class="col-sm-4">
+					  <ul class="list-group">
+						<li class="list-group-item gp-list-group-item list-group-item-success">
+						  <b>Presenças</b> <span class="badge" th:inline="text">[[${consolidadoFrequencia.porcentagemPresencas}]]%</span>
+						</li>
+					  </ul>
+				  </div>
+	
+				  <div class="col-sm-4">
+					  <ul class="list-group">
+						<li class="list-group-item gp-list-group-item list-group-item-danger">
+						  <b>Faltas</b> <span class="badge" th:inline="text">%</span>
+						</li>
+					  </ul>
+				  </div>
+	
+				  <div class="col-sm-4">
+					  <ul class="list-group">
+						<li class="list-group-item gp-list-group-item list-group-item-warning">
+						  <b>Atrasos</b> <span class="badge" th:inline="text"><b>min</b> </span>
+						</li>
+					  </ul>
+				  </div>
+	
+				  <div class="col-sm-4">
+					  <ul class="list-group">
+						<li class="list-group-item gp-list-group-item list-group-item-info">
+						  <b>Reposições</b> <span class="badge" th:inline="text"></span>
+						</li>
+					  </ul>
+				  </div>
+	
+				  <div class="col-sm-4">
+					  <ul class="list-group">
+						<li class="list-group-item gp-list-group-item list-group-item-default">
+						  <b>Pendências</b> <span class="badge" th:inline="text"></span>
+						</li>
+					  </ul>
+				  </div>
+				  </div>
+				</div>
+			 
+				  <div class="panel panel-bluegray">
+				  <div class="panel-heading">
+					<a class="panel-title" data-toggle="collapse" data-target="#presenca"><i class="fa fa-caret-down" aria-hidden="true"></i> Frequências</a>
+				 </div>
+				  <div id="presenca" class="panel-body collapse in">
+					  <span th:if="${not existeFrequenciaNormal}">Não há frequências</span>
+					  
+					<div id="frequencias" th:if="${not #lists.isEmpty(estagio.frequencias)} and ${existeFrequenciaNormal}">	          
+						<table class="table table-hover table-bordered">
+						  <thead>
+							<tr>
+							  <th class="sort" data-sort="timestamp">Data</th>
+							  <th class="sort" data-sort="horaEntrada">Hora da entrada</th>
+							  <th class="sort" data-sort="horaSaida">Hora da saída</th>
+							  <th class="sort" data-sort="status">Status</th>
+							</tr>
+						  </thead>
+						  <tbody class="list">
+							<tr th:each="frequencia : ${estagio.frequencias}" th:if="${#strings.equals(frequencia.tipo, 'NORMAL')}">
+								<td class="timestamp" data-timestamp="20120911" th:inline="text" th:attr="data-timestamp=${#dates.format(frequencia.data,'yyyyMMdd')}"></td>
+								<td class="horaEntrada" th:text="${frequencia.horaEntrada}"></td>  
+								<td class="horaEntrada" th:text="${frequencia.horaSaida}"></td>  
+	
+								<td  class="status" th:if="${#strings.equals(frequencia.status, 'PRESENTE')}"><span class="label label-success" th:text="${frequencia.status}"></span></td>
+								<td  class="status" th:if="${#strings.equals(frequencia.status, 'FALTA')}" ><span class="label label-danger" th:text="${frequencia.status}"></span></td>
+								<td  class="status" th:if="${#strings.equals(frequencia.status, 'AGUARDO_SAIDA')}" ><span class="label label-default" th:text="${frequencia.status}"></span></td>
+								<td  class="status" th:if="${#strings.equals(frequencia.status, 'ATRASADO')}" ><span class="label label-default" th:text="${frequencia.status}"></span></td>
+								<td  class="status" th:if="${#strings.equals(frequencia.status, 'ABONADO')}"><span class="label label-default" th:text="${frequencia.status}"></span></td>						    
+							</tr>
+						  </tbody>
+						</table> 
+					</div>
+				  </div>
+				</div>
+				
+				  <div class="panel panel-bluegray">
+				  <div class="panel-heading">
+					<a class="panel-title" data-toggle="collapse" data-target="#reposicao"><i class="fa fa-caret-down" aria-hidden="true"></i> Reposições</a>
+				 </div>
+				  <div id="reposicao" class="panel-body collapse in">
+					  <span th:if="${not existeReposicao}">Não há reposições</span>
+					  
+					<div id="frequencias" th:if="${not #lists.isEmpty(estagio.frequencias)} and ${existeReposicao}">	          
+						<table class="table table-hover table-bordered">
+						  <thead>
+							<tr>
+							  <th class="sort" data-sort="timestamp">Data</th>
+							  <th class="sort" data-sort="horaEntrada">Hora da entrada</th>
+							  <th class="sort" data-sort="horaSaida">Hora da saída</th>
+							  <th class="sort" data-sort="status">Status</th>
+							</tr>
+						  </thead>
+						  <tbody class="list">
+							<tr th:each="frequencia : ${estagio.frequencias}" th:if="${#strings.equals(frequencia.tipo, 'REPOSICAO')}">
+								<td class="timestamp" data-timestamp="20120911" th:inline="text" th:attr="data-timestamp=${#dates.format(frequencia.data,'yyyyMMdd')}"></td>
+								<td class="horaEntrada" th:text="${frequencia.horaEntrada}"></td>  
+								<td class="horaEntrada" th:text="${frequencia.horaSaida}"></td>
+	
+								<td  class="status" th:if="${#strings.isEmpty(frequencia.status)}"><span class="label label-success"></span></td>
+								<td  class="status" th:if="${#strings.equals(frequencia.status, 'PRESENTE')}"><span class="label label-success" th:text="${frequencia.status}"></span></td>
+								<td  class="status" th:if="${#strings.equals(frequencia.status, 'FALTA')}" ><span class="label label-danger" th:text="${frequencia.status}"></span></td>
+								<td  class="status" th:if="${#strings.equals(frequencia.status, 'AGUARDO_SAIDA')}" ><span class="label label-default" th:text="${frequencia.status}"></span></td>
+								<td  class="status" th:if="${#strings.equals(frequencia.status, 'ATRASADO')}" ><span class="label label-default" th:text="${frequencia.status}"></span></td>
+								<td  class="status" th:if="${#strings.equals(frequencia.status, 'ABONADO')}"><span class="label label-default" th:text="${frequencia.status}"></span></td>						    
+							</tr>
+						  </tbody>
+						</table> 
+					</div>
+				  </div>
+				</div>
+				
+				<div class="panel panel-bluegray">
+				  <div class="panel-heading">
+					<a class="panel-title" data-toggle="collapse" data-target="#planoEstagio"><i class="fa fa-caret-down" aria-hidden="true"></i> Plano de Estágio</a>
+				  </div>
+				  <div id="planoEstagio" class="panel-body collapse in">
+					  <table th:if="${submissaoPlano} != null" class="table table-hover">
+						<tbody>
+						  <tr>
+							<td class="gp-sem-borda"><strong>Documento</strong></td>
+							<td class="gp-sem-borda"><a class="gp-link-download-submissao" th:href="@{/Estagiario/Acompanhamento/{idEstagio}/DownloadPlano(idEstagio=${estagio.id})}" th:text="${#dates.format(submissaoPlano.submetidoEm, 'dd/MM/yyyy')} + ' - Plano de Estágio'"></a></td>
+						  </tr>
+						  <tr>
+							<td><strong>Status</strong></td>
+							<td th:text="${submissaoPlano.statusEntrega}"></td>
+						  </tr>
+						  <tr>
+							<td><strong>Nota</strong></td>
+							<td th:text="${submissaoPlano.nota}"></td>
+						  </tr>
+						  <tr>
+							<td><strong>Comentario</strong></td>
+							<td th:text="${submissaoPlano.comentario}"></td>
+						  </tr>
+						</tbody>
+					  </table>
+					  
+						<div class="gp-modelo-doc">Modelo de Plano de Estágio 
+							<a th:href="@{/documents/UFC-Quixada-Plano_Estagio_modelo.doc}">Clique aqui para baixar!</a>
+							<span th:if="${submissaoPlano} != null">
+								<a th:if="${#strings.equals(submissaoPlano.statusEntrega, 'SUBMETIDO')} or ${#strings.equals(submissaoPlano.statusEntrega, 'CORRECAO')}" href="#submissaoPlano" class="btn btn-success btn-sm pull-right gp-submissao-modal" data-toggle="modal">Editar Submissão</a>
+							</span>
+							<a th:if="${submissaoPlano} == null" href="#submissaoPlano" class="btn btn-success btn-sm pull-right gp-submissao-modal" data-toggle="modal">Submeter</a>
+						</div>    
+				   </div>
+				</div>
+			  
+				<div class="panel panel-bluegray">
+					<div class="panel-heading">
+						<a class="panel-title" data-toggle="collapse" data-target="#relatorioEstagio"><i class="fa fa-caret-down" aria-hidden="true"></i> Relatório de Estágio</a>
+					</div>
+	
+					<div id="relatorioEstagio" class="panel-body collapse in">
+						<table th:if="${submissaoRelatorio} != null" class="table table-hover">
+						<tbody>
+						  <tr>
+							<td class="gp-sem-borda"><strong>Documento</strong></td>
+							<td class="gp-sem-borda"><a class="gp-link-download-submissao" th:href="@{/Estagiario/Acompanhamento/{idEstagio}/DownloadRelatorio(idEstagio=${estagio.id})}" th:text="${#dates.format(submissaoRelatorio.submetidoEm, 'dd/MM/yyyy')} + ' - Relatório de Estágio'"></a></td>
+						  </tr>
+						  <tr>
+							<td><strong>Status</strong></td>
+							<td th:text="${submissaoRelatorio.statusEntrega}"></td>
+						  </tr>
+						  <tr>
+							<td><strong>Nota</strong></td>
+							<td th:text="${submissaoRelatorio.nota}"></td>
+						  </tr>
+						  <tr>
+							<td><strong>Comentario</strong></td>
+							<td th:text="${submissaoRelatorio.comentario}"></td>
+						  </tr>
+						</tbody>
+					  </table>
+						<div class="gp-modelo-doc"> 
+							<a th:href="@{/documents/UFC-Quixada-Relatorio_Final_Estagio-modelo.doc}">Clique aqui para baixar!</a>
+							<span th:if="${submissaoRelatorio} != null">
+								<a th:if="${#strings.equals(submissaoRelatorio.statusEntrega, 'SUBMETIDO')} or ${#strings.equals(submissaoRelatorio.statusEntrega, 'CORRECAO')}" href="#submissaoRelatorio" class="btn btn-success btn-sm pull-right gp-submissao-modal" data-toggle="modal">Editar Submissão</a>
+							</span>
+							<a th:if="${submissaoRelatorio} == null" href="#submissaoRelatorio" class="btn btn-success btn-sm pull-right gp-submissao-modal" data-toggle="modal">Submeter</a>
+						</div>       
+					</div>
+				</div>
+				
+				<div class="panel panel-bluegray">
+				  <div class="panel-heading">
+					<a class="panel-title" data-toggle="collapse" data-target="#avaliacaoRendimento"><i class="fa fa-caret-down" aria-hidden="true"></i> Avaliação Rendimento</a>
+				  </div>
+				<div id="avaliacaoRendimento" class="panel-body collapse in">
+				 <div class="avaliacao" th:if="${estagio.avaliacaoRendimento != null and estagio.avaliacaoRendimento.modo.name()=='FORMULARIO'}">
+					   <div class="row">
+						   <div class="col-md-12">
+						  <strong>Atividade curricular:</strong>
+						  <p th:text="${estagio.avaliacaoRendimento.atividadeCurricular != null} ? ${estagio.avaliacaoRendimento.atividadeCurricular} : ' '"></p>
+						</div>
+						<div class="col-md-12">
+						  <strong>Início da avaliação:</strong>
+						  <p th:text="${estagio.avaliacaoRendimento.inicioAvaliacao != null} ? ${#dates.format(estagio.avaliacaoRendimento.inicioAvaliacao, 'dd/MM/yyyy')} : ' '"></p>
+						</div>
+						<div class="col-md-12">
+						  <strong>Término da avaliação:</strong>
+						  <p th:text="${estagio.avaliacaoRendimento.terminoAvaliacao != null} ? ${#dates.format(estagio.avaliacaoRendimento.terminoAvaliacao, 'dd/MM/yyyy')} : ' '"></p>
+						</div>
+						<div class="col-md-12">
+						  <strong>Objetivo geral do estágio:</strong>
+						  <p th:text="${estagio.avaliacaoRendimento.objetivoEstagio != null} ? ${estagio.avaliacaoRendimento.objetivoEstagio} : ' '"></p>
+						</div>
+					   </div>
+					   <hr/>
+					   <div class="row">
+						 <div class="col-md-12"><h6>ASSIDUIDADE E DISCIPLINA</h6></div>
+						 <div class="col-md-12">
+						  <strong>Frequência:</strong>
+						  <p th:text="${estagio.avaliacaoRendimento.frequencia != null} ? ${estagio.avaliacaoRendimento.frequencia.descricaoItem} : ' '"></p>
+						  </div>
+						  <div class="col-md-12">
+							  <strong>Permanência:</strong>
+							  <p th:text="${estagio.avaliacaoRendimento.permanencia != null} ? ${estagio.avaliacaoRendimento.permanencia.descricaoItem} : ' '"> </p>
+						  </div>
+						  <div class="col-md-12">
+							  <strong>Disciplina quando ao cumprimento de normas:</strong>
+							  <p th:text="${estagio.avaliacaoRendimento.disciplina != null} ? ${estagio.avaliacaoRendimento.disciplina.descricaoItem} : ' '"></p>
+						  </div>
+						  <div class="col-md-12">
+							  <strong>Comentário:</strong>
+							  <p th:text="${estagio.avaliacaoRendimento.fatorAssuidadeDisciplinaComentario}"></p>
+						  </div>
+					 </div>
+					 <hr/>
+					  <div class="row">
+							  <div class="col-md-12"><h6 >INICIATIVA E PRODUTIVIDADE</h6></div>
+							  <div class="col-md-12">
+								  <strong>Iniciativa:</strong>
+									<p th:text="${estagio.avaliacaoRendimento.iniciativa != null} ? ${estagio.avaliacaoRendimento.iniciativa.descricaoItem} : ' '"></p>
+							 </div>
+							  <div class="col-md-12">
+								  <strong>Quantidade de Trabalho:</strong>
+								  <p th:text="${estagio.avaliacaoRendimento.quantidadeTrabalho !=null} ? ${estagio.avaliacaoRendimento.quantidadeTrabalho.descricaoItem} : ' '"></p>
+							  </div>
+						  <div class="col-md-12">
+								  <strong>Qualidade de Trabalho:</strong>
+								  <p th:text="${estagio.avaliacaoRendimento.qualidadeTrabalho != null} ? ${estagio.avaliacaoRendimento.qualidadeTrabalho.descricaoItem} : ' '"></p> 
+						  </div>
+						  <div class="col-md-12">
+								  <strong>Cumprimento de prazos:</strong>
+								  <p th:text="${estagio.avaliacaoRendimento.cumprimentoPrazos  != null} ? ${estagio.avaliacaoRendimento.cumprimentoPrazos.descricaoItem} : ' '"></p>
+							</div>
+							 <div class="col-md-12">
+							  <strong>Comentário:</strong>
+							  <p th:text="${estagio.avaliacaoRendimento.fatorIniciativaProdutividadeComentario}"></p>
+						  </div>
+					  </div>
+					   <hr/>
+					  <div class="row">
+							  <div class="col-md-12"><h6 >RESPONSABILIDADE</h6></div>
+								  <div class="col-md-12">
+								  <strong>Comprometimento com o trabalho:</strong>
+								  <p th:text="${estagio.avaliacaoRendimento.comprometimento != null} ? ${estagio.avaliacaoRendimento.comprometimento.descricaoItem} : ' '"></p>
+							  </div>
+							  <div class="col-md-12">
+								  <strong>Cuidado com materiais e equipamentos:</strong>
+								  <p th:text="${estagio.avaliacaoRendimento.cuidadoMateriais != null} ? ${estagio.avaliacaoRendimento.cuidadoMateriais.descricaoItem} : ' '"></p>
+							  </div>
+							 <div class="col-md-12">
+								  <strong>Comentário:</strong>
+								  <p th:text="${estagio.avaliacaoRendimento.fatorResponsabilidadeComentario}"></p>
+							  </div>
+					  </div>
+					   <hr/>
+					  <div class="row">
+							  <div class="col-md-12"><h6>RELACIONAMENTO</h6></div>
+							  <div class="col-md-12">
+								  <strong>Relacionamento junto a gerência e demais funcionários:</strong>
+								  <p th:text="${estagio.avaliacaoRendimento.relacionamento != null} ? ${estagio.avaliacaoRendimento.relacionamento.descricaoItem} : ' ' "></p>
+							  </div>
+							  <div class="col-md-12">
+								  <strong>Trabalho em equipe:</strong>
+								  <p th:text="${estagio.avaliacaoRendimento.trabalhoEquipe != null} ? ${estagio.avaliacaoRendimento.trabalhoEquipe.descricaoItem} : ' '"></p>
+							  </div>
+							  <div class="col-md-12">
+								  <strong>Comentário:</strong>
+								  <p th:text="${estagio.avaliacaoRendimento.fatorRelacionamentoComentario}"></p>
+							  </div>
+					 </div>
+					 <hr/>
+					 <div class="row">
+						 <div class="col-md-12"><h6>NOTA E COMENTÁRIO FINAL</h6></div>
+						 <div class="col-md-12">
+							  <strong>Nota Geral (0,0 a 10,0):</strong>
+							  <p th:text="${estagio.avaliacaoRendimento.nota != null} ? ${estagio.avaliacaoRendimento.nota} : ' ' "></p>
+						  </div>
+						  <div class="col-md-12">
+							  <strong>Comentários finais e sugestões:</strong>
+							  <p th:text="${estagio.avaliacaoRendimento.comentarioFinal != null} ? ${estagio.avaliacaoRendimento.comentarioFinal} : ' ' "></p>
+						  </div>
+					 </div>
+					 <hr/>
+					 <div class="row">
+						 <div class="col-md-12"><h6>PARECER DO PROFESSOR ORIENTADOR</h6></div>
+						 <div class="col-md-12">
+							 <strong>Confirmação do estágio:</strong>
+							  <p th:text="${estagio.avaliacaoRendimento.confirmadoNoEstagio} ? 'Confirmado no estágio' : 'Não confirmado no estágio' "></p>
+						  </div>
+						  <div class="col-md-12">
+							  <strong>Fatores que serviram de base para o parecer emitido:</strong>
+							  <ul class="lista-fatores">
+								  <li th:if="${estagio.avaliacaoRendimento.fatorAssuidade}" th:text="Assiduidade" />
+								  <li th:if="${estagio.avaliacaoRendimento.fatorDisciplina}" th:text="Disciplina" />
+								  <li th:if="${estagio.avaliacaoRendimento.fatorCapacidadeIniciativa}" th:text="${'Capacidade de Iniciativa'}" />
+								  <li th:if="${estagio.avaliacaoRendimento.fatorProdutividade}" th:text="Produtividade" />
+								  <li th:if="${estagio.avaliacaoRendimento.fatorResponsabilidade}" th:text="Responsabilidade" />
+								  <li th:if="${estagio.avaliacaoRendimento.outrosMotivos and estagio.avaliacaoRendimento.especificacaoMotivo != null}" th:text="'Outro: ' + ${estagio.avaliacaoRendimento.especificacaoMotivo}" />
+							  </ul>
+						  </div>
+						  <div class="col-md-12">
+							 <strong>Comentários/Observações:</strong>
+							  <p th:text="${estagio.avaliacaoRendimento.observacaoParecer != null} ? ${estagio.avaliacaoRendimento.observacaoParecer}  : ' ' "></p>
+						  </div>
+						  <div class="col-md-12">
+							 <strong>Necessidade de Treinamento:</strong>
+							  <p th:text="${estagio.avaliacaoRendimento.necessidadeTreinamento and estagio.avaliacaoRendimento.especificacaoTreinamento != null} ? 'Há necessidade de treinamento: '+${estagio.avaliacaoRendimento.especificacaoTreinamento}  : 'Não há necessidade de treinamento.' "></p>
+						  </div>
+						  <div class="col-md-12" th:if="${estagio.avaliacaoRendimento.necessidadeTreinamento}">
+							 <strong>Caráter do Treinamento:</strong>
+							  <p th:text="${estagio.avaliacaoRendimento.caraterTreinamentoUrgente} ? 'Urgente' : (${estagio.avaliacaoRendimento.caraterTreinamentoImportante} ? 'Importante' :  'Comum')"></p>
+						  </div>
+					 </div>
+				  </div>
+				  
+				  
+				 <!-- VIA ARQUIVO --> 
+				 <div class="avaliacao" th:if="${estagio.avaliacaoRendimento != null and estagio.avaliacaoRendimento.modo.name()=='ARQUIVO'}">
+					   <div class="row">
+						 <div class="col-md-12"><h6>NOTA E COMENTÁRIO FINAL</h6></div>
+						 <div class="col-md-12">
+							  <strong>Nota Geral (0,0 a 10,0):</strong>
+							  <p th:text="${estagio.avaliacaoRendimento.nota != null} ? ${estagio.avaliacaoRendimento.nota} : ' ' "></p>
+						  </div>
+						  <div class="col-md-12">
+							  <strong>Comentários finais e sugestões:</strong>
+							  <p th:text="${estagio.avaliacaoRendimento.comentarioFinal != null} ? ${estagio.avaliacaoRendimento.comentarioFinal} : ' ' "></p>
+						  </div>
+						  <div class="col-md-12" th:if="${estagio.avaliacaoRendimento.documento != null} ">
+							  <strong>Arquivo da avaliação:</strong>
+							  <p><a class="gp-link-download-submissao" th:href="@{/Estagiario/Acompanhamento/{idEstagio}/DownloadAvaliacaoRendimento(idEstagio=${estagio.id})}" th:text="${estagio.avaliacaoRendimento.documento.nome}+'.pdf'"></a></p>
+						  </div>
+					 </div>
+				 
+				  </div>
+				   </div>
+				 </div>
+				
+		
+			  </div>
+			
+			  <div class="col-md-5">
+				  <div id="controle-ponto" th:if="${not #lists.isEmpty(presencas)}">
+					  <ul class="list-group" th:each= "presenca: ${presencas}" >
+						<li class="list-group-item gp-list-group-item panel-bluegray" th:if="${presenca.permissaoEntrada and #strings.equals(presenca.frequencia.tipo, 'NORMAL')}">
+						  <b th:inline="text">Controle de Ponto Entrada</b>
+						  <a th:href="@{/Estagiario/Acompanhamento/{idEstagio}/PresencaEntrada(idEstagio=${estagio.id})}" class="btn btn-success btn-sm pull-right gp-btn-presenca-entrada">Entrada</a>
+						</li>
+	
+						<li class="list-group-item gp-list-group-item panel-bluegray" th:if="${presenca.permissaoSaida and #strings.equals(presenca.frequencia.tipo, 'NORMAL')}">
+						  <b th:inline="text">Controle de Ponto Saída</b>
+						  <a th:href="@{/Estagiario/Acompanhamento/{idEstagio}/PresencaSaida(idEstagio=${estagio.id})}" class="btn btn-success btn-sm pull-right gp-btn-presenca-saida">Saída</a>
+						</li>
+	
+						<li class="list-group-item gp-list-group-item panel-bluegray" th:if="${presenca.permissaoEntrada and #strings.equals(presenca.frequencia.tipo, 'REPOSICAO')}">
+						  <b th:inline="text">Controle de Ponto Entrada [Reposição]</b>
+						  <a th:href="@{/Estagiario/Acompanhamento/{idEstagio}/PresencaEntradaReposicao(idEstagio=${estagio.id})}" class="btn btn-success btn-sm pull-right gp-btn-presenca-entrada">Entrada</a>
+						</li>
+	
+						<li class="list-group-item gp-list-group-item panel-bluegray" th:if="${presenca.permissaoSaida and #strings.equals(presenca.frequencia.tipo, 'REPOSICAO')}">
+						  <b th:inline="text">Controle de Ponto Saída [Reposição]</b>
+						  <a th:href="@{/Estagiario/Acompanhamento/{idEstagio}/PresencaSaidaReposicao(idEstagio=${estagio.id})}" class="btn btn-success btn-sm pull-right gp-btn-presenca-saida">Saída</a>
+						</li>
+					  </ul>
+				  </div>
+	
+				<div class="panel panel-bluegray">
+				  <div class="panel-heading">
+					<a class="panel-title" data-toggle="collapse" data-target="#detalhesTurma" th:inline="text"><i class="fa fa-caret-down" aria-hidden="true"></i> Turma: [[${estagio.turma.nome}]] - [[${estagio.turma.semestre}]]</a>
+					</div>
+				  <div id="detalhesTurma" class="panel-body collapse in">
+					  <table class="table table-hover">
+						<tbody>
+						  <tr>
+							<td class="gp-sem-borda"><strong>Orientador</strong></td>
+							<td class="gp-sem-borda" th:text="${estagio.turma.orientador.nome}"></td>
+						  </tr>
+						  <tr>
+							<td><strong>Supervisores</strong></td>
+							<td  th:inline="text"> <p th:each="sup : ${estagio.turma.supervisores}"> [[${sup.nome}]]</p> </td>
+						  </tr>
+						  <tr>
+							<td><strong>Período</strong></td>
+							<td th:text="${#dates.format(estagio.turma.inicio, 'dd/MM/yyyy')} + ' a ' + ${#dates.format(estagio.turma.termino, 'dd/MM/yyyy')}"></td>
+						  </tr>
+						</tbody>
+					  </table>
+				   </div>
+				</div>
+				
+				<div th:if="${#strings.equals(estagio.turma.tipoTurma, 'NPI')}" class="panel panel-bluegray">
+				  <div class="panel-heading">
+					<a class="panel-title" data-toggle="collapse" data-target="#expedienteTurma"><i class="fa fa-caret-down" aria-hidden="true"></i> Expediente da Turma</a>
+					</div>
+				  <div id="expedienteTurma" class="panel-body collapse in">
+					  <table class="table table-hover">
+						<tbody>
+						  <tr th:each="expediente : ${estagio.turma.expedientes}">
+							<td th:inline="text"><strong>[[${expediente.diaSemana.descricao}]]</strong></td>
+							<td th:inline="text">[[${#dates.format(expediente.horaInicio, 'HH:mm')}]] as [[${#dates.format(expediente.horaTermino, 'HH:mm')}]]</td>
+						  </tr>
+						</tbody>
+					  </table>
+				   </div>
+				</div>
+		
+	-- 	        <div class="panel panel-bluegray"> -->
+	-- 	          <div class="panel-heading"> -->
+	-- 	            <a class="panel-title" data-toggle="collapse" data-target="#avaliacaoEstagio"><i class="fa fa-caret-down" aria-hidden="true"></i> Avaliação Final de Estágio</a> -->
+	-- 	          </div> -->
+		
+	-- 	          <div id="avaliacaoEstagio" class="panel-body collapse in"> -->
+	-- 				  <table class="table table-hover"> -->
+	-- 				    <tbody> -->
+	-- 				      <tr> -->
+	-- 				        <td class="gp-sem-borda"><strong>Situação</strong></td> -->
+	-- 				        <td class="gp-sem-borda" th:text="${estagio.situacao}"></td> -->
+	-- 				      </tr> -->
+	-- 				      <tr> -->
+	-- 				        <td><strong>Nota</strong></td> -->
+	-- 				        <td th:inline="text"> <p th:if="${#strings.equals(estagio.situacao, 'CONCLUIDO')}" th:text="${estagio.nota}"></p> </td> -->
+	-- 				      </tr> -->
+	-- 				      <tr> -->
+	-- 				        <td><strong>Resultado</strong></td> -->
+	-- 				        <td th:inline="text"> <p th:if="${#strings.equals(estagio.situacao, 'CONCLUIDO')}" th:text="${estagio.resultado.descricao}"></p> </td> -->
+	-- 				      </tr> -->
+	-- 				    </tbody> -->
+	-- 				  </table> -->
+	-- 	           </div> -->
+	-- 	        </div> -->
+			  </div>
+			  
+	
+			  
+			</div>
+		
+		</div>
+	
+	
+			<div th:if="${submissaoPlano} == null"  id="submissaoPlano" class="modal">
+				 <form class="form-horizontal" th:action="@{/Estagiario/Acompanhamento/{idEstagio}/SubmeterPlano(idEstagio=${estagio.id})}" method="post" enctype="multipart/form-data">
+				   <div class="modal-dialog">
+					 <div class="modal-content">
+					   <div class="modal-header">
+						 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+						 <h4 class="modal-title">Plano de Estágio</h4>
+					   </div>
+				
+						 <div class="modal-body">
+							 <label for="inputArquivo">Plano de Estágio</label><br/>
+							 <input type="file" class="form-control" id="inputArquivo" placeholder="Arquivo" name="planoEstagio" /> 
+						 </div>
+						 
+						 <div class="modal-footer">
+						   <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+						   <button type="submit" class="btn btn-success">Submeter <i class="fa fa-arrow-circle-up" aria-hidden="true"></i></button>
+						 </div>
+					 </div>
+				   </div>
+				   </form>
+			</div>
+				<div th:if="${submissaoPlano} != null" id="submissaoPlano" class="modal">
+				<form class="form-horizontal" th:action="@{/Estagiario/Acompanhamento/{idEstagio}/EditarPlano(idEstagio=${estagio.id})}" method="post" enctype="multipart/form-data"> 
+					<div class="modal-dialog">
+						 <div class="modal-content">
+						   <div class="modal-header">
+							 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							 <h4 class="modal-title">Editar Plano de Estágio</h4>
+						   </div>
+					
+							 <div class="modal-body">
+								 <label for="inputArquivo">Plano de Estágio</label><br/>
+								 <input type="file" class="form-control" id="inputArquivo" placeholder="Arquivo" name="planoEstagio" /> 
+							 </div>
+							 
+							 <div class="modal-footer">
+							   <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+							   <button type="submit" class="btn btn-success">Submeter <i class="fa fa-arrow-circle-up" aria-hidden="true"></i></button>
+							 </div>
+						 </div>
+					   </div>
+					</form>
+				</div>
+	
+	
+			 <div th:if="${submissaoRelatorio} == null" id="submissaoRelatorio" class="modal">
+				 <form class="form-horizontal" th:action="@{/Estagiario/Acompanhamento/{idEstagio}/SubmeterRelatorio(idEstagio=${estagio.id})}" method="post" enctype="multipart/form-data">
+				   <div class="modal-dialog">
+					 <div class="modal-content">
+					   <div class="modal-header">
+						 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+						 <h4 class="modal-title">Relatório de Estágio</h4>
+					   </div>
+				
+						 <div class="modal-body">
+							 <label for="inputArquivo">Relatório de Estágio</label><br/>
+							 <input type="file" class="form-control" id="inputArquivo" placeholder="Arquivo" name="relatorio" /> 
+						 </div>
+						 
+						 <div class="modal-footer">
+						   <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+						   <button type="submit" class="btn btn-success">Submeter <i class="fa fa-arrow-circle-up" aria-hidden="true"></i></button>
+						 </div>
+					 </div>
+				   </div>	 
+				 </form>	
+			 </div>
+			 <div th:if="${submissaoRelatorio} != null" id="submissaoRelatorio" class="modal">
+				 <form class="form-horizontal" th:action="@{/Estagiario/Acompanhamento/{idEstagio}/EditarRelatorio(idEstagio=${estagio.id})}" method="post" enctype="multipart/form-data">
+				   <div class="modal-dialog">
+					 <div class="modal-content">
+					   <div class="modal-header">
+						 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+						 <h4 class="modal-title">Contratos Assinados</h4>
+					   </div>
+				
+						 <div class="modal-body">
+							 <label for="inputArquivo">Contratos Assinados </label><br/>
+							 <input type="file" class="form-control" id="inputArquivo" placeholder="Arquivo" name="relatorio" /> 
+						 </div>
+						 
+						 <div class="modal-footer">
+						   <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+						   <button type="submit" class="btn btn-success">Submeter <i class="fa fa-arrow-circle-up" aria-hidden="true"></i></button>
+						 </div>
+					 </div>
+				   </div>	 
+				 </form>	
+			 </div>
+	</section>
+		
+	<section layout:fragment="js">
+		 <script src="http://listjs.com/no-cdn/list.js"></script>
+		  <script type="text/javascript">
+		var options = { valueNames: [{ attr: 'data-timestamp', name: 'timestamp' }, 'status', 'tipo'] };
+		var frequencias = new List('frequencias', options).sort('timestamp', { order: "desc" });
+		  </script>
+	</section>
+	</html>
